@@ -7,7 +7,7 @@ import AppError from "./../utils/appError.js";
 const signToken = ({ id }) => {
   return jwt.sign(
     {
-      id,
+      id: id.toString(),
     },
     process.env.JWT_SECRET,
     {
@@ -24,7 +24,7 @@ export const registerUser = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
   });
 
-  const token = signToken(newUser._id);
+  const token = signToken({ id: newUser._id });
 
   res.status(201).json({
     status: "success",
@@ -51,7 +51,7 @@ export const login = catchAsync(async (req, res, next) => {
   }
 
   // 3) If everything ok, send token to client
-  const token = signToken(user._id);
+  const token = signToken({ id: user._id });
   res.status(200).json({
     status: "success",
     token,
@@ -76,11 +76,24 @@ export const protect = catchAsync(async (req, res, next) => {
 
   // 2) Verification token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  console.log(decoded);
 
   // 3) Check if user still exists
+  const currentUser = await User.findById(decoded.id);
+
+  if (!currentUser) {
+    return next(
+      new AppError("The user belonging to this token no longer exists", 401)
+    );
+  }
 
   // 4) Check if user changed password after the token was issued
+  if (currentUser.changedPasswordAfter(decoded.iat)) {
+    return next(
+      new AppError("User recently changed password! Please log in again", 401)
+    );
+  }
 
+  // GRANT ACCESS TO PROTECTED ROUTE
+  req.user = currentUser;
   next();
 });
