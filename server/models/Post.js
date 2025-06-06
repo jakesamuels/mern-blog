@@ -1,4 +1,5 @@
 import { mongoose, Schema } from "mongoose";
+import Comment from "./Comment.js";
 
 const PostSchema = new Schema(
   {
@@ -17,6 +18,12 @@ const PostSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
     isPublished: {
       type: Boolean,
       default: false,

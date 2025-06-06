@@ -1,4 +1,6 @@
+import mongoose from "mongoose";
 import catchAsync from "./../utils/catchAsync.js";
+import AppError from "./../utils/appError.js";
 import Post from "../models/Post.js";
 
 export const getAllPosts = catchAsync(async (req, res, next) => {
@@ -21,6 +23,35 @@ export const getAllPosts = catchAsync(async (req, res, next) => {
     results: posts.length,
     data: {
       posts,
+    },
+  });
+});
+
+export const getPost = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+
+  if (!id || !mongoose.Types.ObjectId.isValid(id)) {
+    return next(new AppError("Invalid or missing post ID", 400));
+  }
+
+  const post = await Post.findById(id)
+    .populate("author", "username")
+    .populate({
+      path: "comments",
+      populate: {
+        path: "author",
+        select: "username",
+      },
+    });
+
+  if (!post) {
+    return next(new AppError("Post not found", 404));
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      post,
     },
   });
 });
