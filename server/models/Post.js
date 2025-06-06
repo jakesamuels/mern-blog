@@ -1,5 +1,6 @@
 import { mongoose, Schema } from "mongoose";
 import Comment from "./Comment.js";
+import { nanoid } from "nanoid";
 
 const PostSchema = new Schema(
   {
@@ -51,13 +52,24 @@ const PostSchema = new Schema(
 PostSchema.index({ author: 1, createdAt: -1 });
 
 PostSchema.pre("save", function (next) {
-  if (this.isModified("title")) {
-    this.slug = this.title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)+/g, "");
+  // Only proceed if the title has been modified or if it's a new document
+  if (this.isModified("title") || this.isNew) {
+    // 1. Generate the base slug from the title using your provided logic
+    let baseSlug = this.title
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9]+/g, "-") // Replace non-alphanumeric with hyphens
+      .replace(/(^-|-$)+/g, ""); // Trim leading/trailing hyphens
+
+    // 2. Generate a short, unique random string using nanoid
+    // nanoid() by default generates a 21-character string.
+    // You can specify a shorter length if you prefer, e.g., nanoid(8) for 8 characters.
+    const randomSuffix = nanoid(8); // Generates a random string of 8 characters
+
+    // 3. Append the random string to the base slug
+    this.slug = `${baseSlug}-${randomSuffix}`;
   }
-  next();
+
+  next(); // Call next to proceed with the save operation
 });
 
 const Post = mongoose.model("Post", PostSchema);
