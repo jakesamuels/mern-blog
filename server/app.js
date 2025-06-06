@@ -33,7 +33,7 @@ app.use(
 );
 
 // Prevent parameter pollution
-app.use(hpp());
+app.use(hpp()); /* ADD WHITE LIST Obj */
 
 // Limit requests from same IP
 const limiter = rateLimit({
