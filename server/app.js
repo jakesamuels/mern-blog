@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
+import sanitizer from "perfect-express-sanitizer";
 
 import AppError from "./utils/appError.js";
 import globalErrorHandler from "./controllers/errorController.js";
@@ -19,6 +20,16 @@ app.use(helmet());
 
 // Body parser, reading data from body into req.body
 app.use(express.json());
+
+// Data sanitization against NoSql query injection
+app.use(
+  sanitizer.clean({
+    xss: true,
+    noSql: true,
+    noSqlLevel: 5,
+    sanitizeKeys: true,
+  })
+);
 
 // Limit requests from same IP
 const limiter = rateLimit({
