@@ -3,7 +3,7 @@ import cors from "cors";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import sanitizer from "perfect-express-sanitizer";
-import xss from "xss-clean";
+import hpp from "hpp";
 
 import AppError from "./utils/appError.js";
 import globalErrorHandler from "./controllers/errorController.js";
@@ -31,6 +31,9 @@ app.use(
     sanitizeKeys: true,
   })
 );
+
+// Prevent parameter pollution
+app.use(hpp());
 
 // Limit requests from same IP
 const limiter = rateLimit({
