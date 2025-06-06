@@ -125,3 +125,32 @@ export const updatePost = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+// DELETE - deletePost
+export const deletePost = catchAsync(async (req, res, next) => {
+  const { id: postId } = req.params;
+  const { _id: authorId } = req.user;
+
+  const post = await Post.findById(postId);
+
+  if (!post) {
+    return next(new AppError("No post found with that ID.", 404));
+  }
+
+  if (!post.author.equals(authorId)) {
+    return next(
+      new AppError(
+        "You do not have permission to delete this post as you are not the author.",
+        403
+      )
+    );
+  }
+
+  const deletedPost = await Post.findByIdAndDelete(postId);
+
+  if (!deletedPost) {
+    return next(new AppError("Post could not be deleted.", 500)); // Internal Server Error
+  }
+
+  res.status(204).send();
+});
