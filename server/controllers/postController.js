@@ -88,3 +88,40 @@ export const createPost = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+// PUT - updatePost
+export const updatePost = catchAsync(async (req, res, next) => {
+  const { id: postId } = req.params;
+  const { _id: authorId } = req.user;
+
+  const post = await Post.findById(postId);
+
+  if (!post) {
+    return next(new AppError("No post found with that ID.", 404));
+  }
+
+  if (!post.author.equals(authorId)) {
+    return next(
+      new AppError(
+        "You do not have permission to update this post as you are not the author.",
+        403
+      )
+    );
+  }
+
+  const updatedPost = await Post.findByIdAndUpdate(postId, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!updatedPost) {
+    return next(new AppError("Post could not be updated.", 500));
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      post: updatedPost,
+    },
+  });
+});
