@@ -3,6 +3,7 @@ import catchAsync from "./../utils/catchAsync.js";
 import AppError from "./../utils/appError.js";
 import Post from "../models/Post.js";
 
+// GET - getAllPosts
 export const getAllPosts = catchAsync(async (req, res, next) => {
   const posts = await Post.find()
     .select("title content createdAt")
@@ -27,6 +28,7 @@ export const getAllPosts = catchAsync(async (req, res, next) => {
   });
 });
 
+// GET - getPost
 export const getPost = catchAsync(async (req, res, next) => {
   const { id } = req.params;
 
