@@ -3,6 +3,7 @@ import cors from "cors";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import sanitizer from "perfect-express-sanitizer";
+import xss from "xss-clean";
 
 import AppError from "./utils/appError.js";
 import globalErrorHandler from "./controllers/errorController.js";
@@ -21,7 +22,7 @@ app.use(helmet());
 // Body parser, reading data from body into req.body
 app.use(express.json());
 
-// Data sanitization against NoSql query injection
+// Data sanitization against NoSql query injection and XSS
 app.use(
   sanitizer.clean({
     xss: true,
