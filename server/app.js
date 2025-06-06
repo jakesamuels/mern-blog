@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
+import helmet from "helmet";
 
 import AppError from "./utils/appError.js";
 import globalErrorHandler from "./controllers/errorController.js";
@@ -13,6 +14,10 @@ const app = express();
 // Middleware
 app.use(cors());
 
+// Set security HTTP headers
+app.use(helmet());
+
+// Limit requests from same IP
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
@@ -21,6 +26,7 @@ const limiter = rateLimit({
 
 app.use("/api", limiter);
 
+// Body parser, reading data from body into req.body
 app.use(express.json());
 
 // Routes
