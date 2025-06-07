@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router";
 import AuthProvider from "./context/AuthContext";
+import Layout from "./components/Layout/Layout";
 
 // Protected Routes Component
 import ProtectedRoutes from "./components/auth/ProtectedRoutes";
@@ -19,18 +20,15 @@ root.render(
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route index element={<App />} />
+          <Route element={<Layout />}>
+            <Route index element={<App />} />
+          </Route>
 
           <Route element={<AuthLayout />}>
             <Route path="register" element={<Register />} />
 
             <Route path="login" element={<Login />} />
           </Route>
-
-          {/* <Route path="dashboard" element={<Dashboard />}>
-          <Route index element={<Home />} />
-          <Route path="settings" element={<Settings />} />
-        </Route> */}
         </Routes>
       </AuthProvider>
     </BrowserRouter>
