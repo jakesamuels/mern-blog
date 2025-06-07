@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router";
 
+import AuthLayout from "./components/auth/AuthLayout";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
