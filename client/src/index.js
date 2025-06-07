@@ -5,6 +5,9 @@ import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router";
 import AuthProvider from "./context/AuthContext";
 
+// Protected Routes Component
+import ProtectedRoutes from "./components/auth/ProtectedRoutes";
+
 // Auth Components
 import AuthLayout from "./components/auth/AuthLayout";
 import Register from "./components/auth/Register";
@@ -20,6 +23,7 @@ root.render(
 
           <Route element={<AuthLayout />}>
             <Route path="register" element={<Register />} />
+
             <Route path="login" element={<Login />} />
           </Route>
 
