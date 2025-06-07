@@ -9,7 +9,7 @@ process.on("uncaughtException", (err) => {
 import app from "./app.js";
 import { connectDB } from "./config/db.js";
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 4000;
 
 let server;
 
