@@ -63,7 +63,7 @@ const AuthProvider = ({ children }) => {
       const response = await axios({
         method: "POST",
         data: data,
-        url: "http://localhost:4000/api/users/register",
+        url: "http://localhost:4000/api/users/login",
       });
 
       if (response.data.data && response.data.data.user) {
