@@ -14,7 +14,12 @@ import commentRouter from "./routes/commentRoutes.js";
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 // Set security HTTP headers
 app.use(helmet());
