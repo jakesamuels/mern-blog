@@ -5,7 +5,7 @@ import AuthForm from "./AuthForm";
 import AuthButton from "./AuthButton";
 
 const Register = () => {
-  const { user, logOut, isAuthenticated, registerAction } = useAuth();
+  const { registerAction } = useAuth();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
