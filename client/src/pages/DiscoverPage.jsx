@@ -69,8 +69,6 @@ const DiscoverPage = () => {
     fetchPosts();
   }, []);
 
-  console.log(posts);
-
   const renderCards = () => {
     if (posts.length > 0) {
       return posts.map((post) => (
