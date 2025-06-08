@@ -4,7 +4,7 @@ import User from "../models/User.js";
 import catchAsync from "./../utils/catchAsync.js";
 import AppError from "./../utils/appError.js";
 
-const signToken = ({ id }) => {
+const signToken = (id) => {
   return jwt.sign(
     {
       id: id.toString(),
