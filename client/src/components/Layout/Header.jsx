@@ -55,7 +55,7 @@ const Header = () => {
             <NavLink to="/#top-picks">Top Picks</NavLink>
           </li>
           <li>
-            <NavLink to="/#discover">Discover</NavLink>
+            <NavLink to="/posts/discover">Discover</NavLink>
           </li>
           {isAuthenticated && (
             <li>
@@ -96,7 +96,7 @@ const Header = () => {
               <NavLink to="/#top-picks">Top Picks</NavLink>
             </li>
             <li>
-              <NavLink to="/#discover">Discover</NavLink>
+              <NavLink to="/posts/discover">Discover</NavLink>
             </li>
             {isAuthenticated && (
               <li>
