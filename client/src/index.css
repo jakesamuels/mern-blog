@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("./components/auth/styles/styles.css"); /* AUTH STYLES (LOGIN / REGISTER PAGES)*/
 @import url("./components/Layout/styles/styles.css"); /* LAYOUT STYLES (NAV)*/
+@import url("./pages/styles/DiscoverPage/styles.css"); /* DISCOVER PAGE STYLES*/
 
 * {
   box-sizing: border-box;
@@ -17,10 +18,53 @@ body {
   background-color: #f3f0f0;
 }
 
+a {
+  text-decoration: none;
+}
+
 ul {
   list-style-type: none;
 }
 
 ul li a {
   text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ==========
+ PAGE SECTION ELEMENT
+ ========== */
+section.page-section {
+  width: 87.2%;
+  margin: 0 auto 3rem;
+}
+
+/* ==================== 
+ TABLET STYLES
+ ==================== */
+
+@media (min-width: 48rem) {
+  /* ==========
+  PAGE SECTION ELEMENT
+  ========== */
+  section.page-section {
+    width: 89.7%;
+    margin: 0 auto 4rem;
+  }
+}
+
+/* ==================== 
+ DESKTOP STYLES
+ ==================== */
+@media (min-width: 48rem) {
+  /* ==========
+  PAGE SECTION ELEMENT
+  ========== */
+  section.page-section {
+    width: 77.1%;
+  }
 }
