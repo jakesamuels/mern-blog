@@ -17,6 +17,10 @@ import Login from "./components/auth/Login";
 // Post Pages
 import DiscoverPage from "./pages/DiscoverPage";
 
+// Dashboard
+import Dashboard from "./pages/Dashboard";
+import AddPost from "./components/dashboard/AddPost";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -30,6 +34,17 @@ root.render(
               <Route path=":id" element={<p>Post</p>} />
               <Route path="discover" element={<DiscoverPage />} />
             </Route>
+          </Route>
+
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoutes>
+                <Dashboard />
+              </ProtectedRoutes>
+            }
+          >
+            <Route path="addPost" element={<AddPost />} />
           </Route>
 
           <Route element={<AuthLayout />}>
