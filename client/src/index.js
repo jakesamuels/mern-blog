@@ -19,7 +19,7 @@ import DiscoverPage from "./pages/DiscoverPage";
 
 // Dashboard
 import Dashboard from "./pages/Dashboard";
-import AddPost from "./components/dashboard/AddPost";
+import AddPostForm from "./components/dashboard/AddPostForm";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -29,22 +29,23 @@ root.render(
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<App />} />
+
             <Route path="/posts">
               <Route index element={<Navigate to="/" replace />} />
               <Route path=":id" element={<p>Post</p>} />
               <Route path="discover" element={<DiscoverPage />} />
             </Route>
-          </Route>
 
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoutes>
-                <Dashboard />
-              </ProtectedRoutes>
-            }
-          >
-            <Route path="addPost" element={<AddPost />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoutes>
+                  <Dashboard />
+                </ProtectedRoutes>
+              }
+            >
+              <Route path="addPost" element={<AddPostForm />} />
+            </Route>
           </Route>
 
           <Route element={<AuthLayout />}>

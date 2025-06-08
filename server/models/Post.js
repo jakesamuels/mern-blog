@@ -10,6 +10,10 @@ const PostSchema = new Schema(
       trim: true,
       maxlength: [100, "Title can't exceed 100 characters"],
     },
+    description: {
+      type: String,
+      required: true,
+    },
     content: {
       type: String,
       required: [true, "Post must include content"],

@@ -12,15 +12,11 @@ const PostPreviewCard = ({ post }) => {
         className="post-preview-card__img"
       />
       <div className="post-preview-card__container">
-        <span className="post-preview-card__title">{post.title}</span>
-        <p className="post-preview-card__content">
-          {post.content.slice(0, 60)}...{" "}
-          <NavLink
-            to={`/posts/${post._id}`}
-            className="post-preview-card__title"
-          >
-            Continue Reading
-          </NavLink>
+        <NavLink to={`/posts/${post._id}`}>
+          <span className="post-preview-card__title">{post.title}</span>
+        </NavLink>
+        <p className="post-preview-card__description">
+          {post.description.slice(0, 100)}...{" "}
         </p>
 
         <div className="post-preview-card__author-info">

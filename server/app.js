@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import sanitizer from "perfect-express-sanitizer";
@@ -26,6 +27,7 @@ app.use(helmet());
 
 // Body parser, reading data from body into req.body
 app.use(express.json());
+app.use(cookieParser());
 
 // Data sanitization against NoSql query injection and XSS
 app.use(
