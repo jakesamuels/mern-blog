@@ -6,7 +6,7 @@ import Post from "../models/Post.js";
 // GET - getAllPosts
 export const getAllPosts = catchAsync(async (req, res, next) => {
   const posts = await Post.find()
-    .select("title content createdAt")
+    .select("title content description createdAt")
     .populate("author", "username");
 
   if (posts.length === 0) {
@@ -61,7 +61,7 @@ export const getPost = catchAsync(async (req, res, next) => {
 // POST - createPost
 export const createPost = catchAsync(async (req, res, next) => {
   const { _id: authorId, username } = req.user;
-  const { title, content } = req.body;
+  const { title, description, content } = req.body;
 
   if (!authorId) {
     return next(new AppError("You are not logged in. Please log in.", 401));
@@ -77,6 +77,7 @@ export const createPost = catchAsync(async (req, res, next) => {
 
   const post = await Post.create({
     title,
+    description,
     content,
     author: { id: authorId, username },
   });
