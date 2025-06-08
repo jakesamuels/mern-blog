@@ -1,0 +1,23 @@
+h2.page-title {
+  margin-bottom: 2rem;
+}
+
+form.add-post-form {
+  /* width: 87.2%; */
+  height: 100vh;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+div.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.quill-editor-wrapper {
+  margin-bottom: 2rem;
+}
