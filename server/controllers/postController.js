@@ -60,7 +60,7 @@ export const getPost = catchAsync(async (req, res, next) => {
 
 // POST - createPost
 export const createPost = catchAsync(async (req, res, next) => {
-  const { _id: authorId } = req.user;
+  const { _id: authorId, username } = req.user;
   const { title, content } = req.body;
 
   if (!authorId) {
@@ -78,7 +78,7 @@ export const createPost = catchAsync(async (req, res, next) => {
   const post = await Post.create({
     title,
     content,
-    author: authorId,
+    author: { id: authorId, username },
   });
 
   res.status(201).json({

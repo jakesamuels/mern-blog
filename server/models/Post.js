@@ -16,8 +16,11 @@ const PostSchema = new Schema(
       minlength: [10, "Content must be at least 10 characters long"],
     },
     author: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+      id: { type: Schema.Types.ObjectId, ref: "User" },
+      username: {
+        type: String,
+        required: true,
+      },
     },
     comments: [
       {
