@@ -24,9 +24,9 @@ const PostPreviewCard = ({ post }) => {
         </p>
 
         <div className="post-preview-card__author-info">
-          {post.author ? (
+          {post.author.username ? (
             <NavLink to="/" className="post-preview-card__author">
-              {post.author}
+              {post.author.username}
             </NavLink>
           ) : (
             <NavLink to="/" className="post-preview-card__author">
