@@ -35,6 +35,7 @@ const AuthProvider = ({ children }) => {
         method: "POST",
         data: data,
         url: "http://localhost:4000/api/users/register",
+        withCredentials: true,
       });
 
       if (response.data.data && response.data.data.user) {
@@ -64,6 +65,7 @@ const AuthProvider = ({ children }) => {
         method: "POST",
         data: data,
         url: "http://localhost:4000/api/users/login",
+        withCredentials: true,
       });
 
       if (response.data.data && response.data.data.user) {
