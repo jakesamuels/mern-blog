@@ -7,7 +7,7 @@ const PostPreviewCard = ({ post }) => {
   return (
     <div className="post-preview-card">
       <img
-        src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+        src="/assets/card-placeholder.webp"
         alt={post.title}
         className="post-preview-card__img"
       />
