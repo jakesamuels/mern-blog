@@ -26,17 +26,17 @@ span.post-preview-card__title {
   display: block;
   font-size: 1.125rem;
   font-weight: 500;
-  margin-bottom: 1rem;
   min-height: 45px;
+  text-decoration: underline;
 }
 
-p.post-preview-card__content {
+p.post-preview-card__description {
   margin-bottom: 1rem;
 }
 
-p.post-preview-card__content a {
+p.post-preview-card__description a {
   font-weight: 500;
-  display: block;
+  display: inline-block;
 }
 
 div.post-preview-card__author-info {
@@ -107,7 +107,7 @@ img.post-preview-card__author-img {
     font-size: 1.25rem;
   }
 
-  p.post-preview-card__content {
+  p.post-preview-card__description {
     font-size: 1.125rem;
     margin-bottom: 2rem;
   }
