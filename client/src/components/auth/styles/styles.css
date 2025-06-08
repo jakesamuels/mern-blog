@@ -49,24 +49,6 @@ form.auth-form {
   width: 87.2%;
 }
 
-form.auth-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-form.auth-form input {
-  height: 2.8125rem;
-  font-size: 1.125rem;
-  padding: 0.5rem;
-  border: 1px solid gray;
-  outline: none;
-  background: none;
-  border-radius: 0.25rem;
-}
-
 button.auth-btn {
   display: block;
   padding: 0.6875rem 2.0625rem;
