@@ -1,0 +1,118 @@
+/* ==========
+ PAGE SECTIONS
+ ========== */
+
+.discover-page__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ==========
+ POST PREVIEW CARDS
+ ========== */
+
+.post-preview-card__img {
+  border-radius: 4px 4px 0 0;
+}
+
+.post-preview-card__container {
+  background: #fff;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+span.post-preview-card__title {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  min-height: 45px;
+}
+
+p.post-preview-card__content {
+  margin-bottom: 1rem;
+}
+
+p.post-preview-card__content a {
+  font-weight: 500;
+  display: block;
+}
+
+div.post-preview-card__author-info {
+  display: flex;
+  align-items: center;
+}
+
+a.post-preview-card__author {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+img.post-preview-card__author-img {
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 35px;
+  margin-right: auto;
+}
+
+/* ====================
+ TABLET STYLES
+ ==================== */
+@media (min-width: 48rem) {
+  /* ==========
+  PAGE SECTIONS
+  ========== */
+
+  .discover-page__cards {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4rem 0;
+    flex-wrap: wrap;
+  }
+
+  /* ==========
+  POST PREVIEW CARDS
+  ========== */
+  div.post-preview-card {
+    width: 48%;
+  }
+}
+
+/* ====================
+ DESKTOP STYLES
+ ==================== */
+@media (min-width: 90rem) {
+  /* ==========
+  PAGE SECTIONS
+  ========== */
+
+  /* .discover-page__cards {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4rem 0;
+    flex-wrap: wrap;
+  } */
+
+  /* ==========
+  POST PREVIEW CARDS
+  ========== */
+  div.post-preview-card {
+    width: 30%;
+  }
+
+  span.post-preview-card__title {
+    font-size: 1.25rem;
+  }
+
+  p.post-preview-card__content {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+
+  img.post-preview-card__author-img {
+    width: 40px;
+  }
+}
