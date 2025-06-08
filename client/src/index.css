@@ -2,6 +2,7 @@
 @import url("./components/auth/styles/styles.css"); /* AUTH STYLES (LOGIN / REGISTER PAGES)*/
 @import url("./components/Layout/styles/styles.css"); /* LAYOUT STYLES (NAV)*/
 @import url("./pages/styles/DiscoverPage/styles.css"); /* DISCOVER PAGE STYLES*/
+@import url("./components/dashboard/styles/form/styles.css"); /* ADD POST FORM STYLES */
 
 * {
   box-sizing: border-box;
@@ -33,6 +34,26 @@ ul li a {
 img {
   display: block;
   max-width: 100%;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  height: 2.1875rem;
+  font-size: 1.125rem;
+  padding: 0.5rem;
+  border: 1px solid gray;
+  outline: none;
+  background: none;
+  border-radius: 0.25rem;
 }
 
 /* ==========
